@@ -11,6 +11,28 @@ void swap(char *dst, char *src)
     return;
 }
 
+int get_random(char A[], int left,int right)
+{
+    // 产生 left 和 right 之间的一个随机整数
+    int result = left + rand()%(right - left + 1);
+    swap(&A[result], &A[left]); /* 将pivot藏到左边 */
+    return A[left]; /* 返回 pivot */
+}
+
+char get_median3(char A[], int left, int right )
+{
+    int center = (left + right)/2;
+    if (A[left] > A[center])
+        swap(&A[left], &A[center]);
+    if (A[left] > A[right])
+        swap( &A[left], &A[right]);
+    if ( A[center] > A[right] )
+        swap(&A[center], &A[right] );
+    /* A[left] <= A[center] <= A[right] */
+    swap(&A[center], &A[left]); /* 将pivot藏到左边 */
+    return A[left]; /* 返回 pivot */
+}
+
 void quick_sort(char array[], int left, int right)
 {
 
@@ -19,7 +41,11 @@ void quick_sort(char array[], int left, int right)
 
     if (left < right){
         i = left, j = right+1;
-        pivot = array[left];
+#if 1
+        pivot = get_median3(array, left, right);//array[left];
+#else
+        pivot = get_random(array, left, right);
+#endif
         while (i < j){
             while (pivot > array[++i]){
             }

@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-typedef struct Binary_Search_Tree* BST;
+typedef struct BinarySearchTree* BST;
 
-struct binary_search_tree{
+struct BinarySearchTree{
     BST left;
     BST right;
     int key;

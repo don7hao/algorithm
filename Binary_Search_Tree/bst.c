@@ -17,6 +17,7 @@ BST bst_delete(int key, BST root)
         return NULL;
 
     BST node = root, *prev = &root;
+    //搜索值为key的节点
     do{
         if (key < node->key){
             prev = &node->left;

@@ -9,5 +9,9 @@ struct BinarySearchTree{
 };
 
 
-BST bst_find(BST root, int key);
+BST bst_find(int key, BST root);
+BST find_max(BST root);
+BST find_min(BST root);
+BST bst_delete(int key, BST root);
+BST bst_insert(int key, BST root);
 
